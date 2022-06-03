@@ -28,7 +28,7 @@ class Product(models.Model):
 
 class Image(models.Model):
     image_url = models.CharField(max_length=2000)
-    products = models.ForeignKey("Product", on_delete=models.CASCADE)
+    product = models.ForeignKey("Product", on_delete=models.CASCADE)
 
     class Meta:
         db_table = "images"
@@ -69,6 +69,9 @@ class Allergy(models.Model):
         db_table = "allergy"
 
 
-class Allergy_Drink(models.Model):
+class Allergy_Product(models.Model):
     allergy = models.ForeignKey("Allergy", on_delete=models.CASCADE)
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "allergy_products"
